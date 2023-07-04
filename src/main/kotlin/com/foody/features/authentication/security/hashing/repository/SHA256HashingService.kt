@@ -1,6 +1,6 @@
-package com.example.features.authentication.security.hashing.repository
+package com.foody.features.authentication.security.hashing.repository
 
-import com.example.features.authentication.security.hashing.models.SaltedHash
+import com.foody.features.authentication.security.hashing.models.SaltedHash
 import org.apache.commons.codec.binary.Hex
 import org.apache.commons.codec.digest.DigestUtils
 import java.security.SecureRandom

@@ -1,15 +1,14 @@
 package com.foody.plugins
 
-import com.example.features.authentication.routes.authenticate
-import com.example.features.authentication.routes.signIn
-import com.example.features.authentication.routes.signUp
-import com.example.features.authentication.security.hashing.repository.HashingService
-import com.example.features.authentication.security.token.models.TokenConfig
-import com.example.features.authentication.security.token.repository.TokenService
-import com.example.features.authentication.user.repository.UserDataSource
+import com.foody.features.authentication.routes.authenticate
+import com.foody.features.authentication.routes.signIn
+import com.foody.features.authentication.routes.signUp
+import com.foody.features.authentication.security.hashing.repository.HashingService
+import com.foody.features.authentication.security.token.models.TokenConfig
+import com.foody.features.authentication.security.token.repository.TokenService
+import com.foody.features.authentication.user.repository.UserDataSource
 import com.foody.routes.rootRoute
 import io.ktor.server.application.*
-import io.ktor.server.http.content.*
 import io.ktor.server.routing.*
 import org.koin.ktor.ext.inject
 

@@ -1,13 +1,13 @@
-package com.example.features.authentication.routes
+package com.foody.features.authentication.routes
 
-import com.example.features.authentication.models.requests.AuthRequest
-import com.example.features.authentication.models.responses.AuthResponse
-import com.example.features.authentication.security.hashing.repository.HashingService
-import com.example.features.authentication.security.hashing.models.SaltedHash
-import com.example.features.authentication.security.token.models.TokenClaim
-import com.example.features.authentication.security.token.models.TokenConfig
-import com.example.features.authentication.security.token.repository.TokenService
-import com.example.features.authentication.user.repository.UserDataSource
+import com.foody.features.authentication.models.requests.AuthRequest
+import com.foody.features.authentication.models.responses.AuthResponse
+import com.foody.features.authentication.security.hashing.models.SaltedHash
+import com.foody.features.authentication.security.hashing.repository.HashingService
+import com.foody.features.authentication.security.token.models.TokenClaim
+import com.foody.features.authentication.security.token.models.TokenConfig
+import com.foody.features.authentication.security.token.repository.TokenService
+import com.foody.features.authentication.user.repository.UserDataSource
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.request.*
@@ -26,19 +26,23 @@ fun Route.signIn(
             call.respond(HttpStatusCode.BadRequest)
             return@post
         }
-        val areFieldsBlank = request.userName.isBlank() || request.password.isBlank()
-        val isPwTooShort = request.password.length <= 8
-        if (areFieldsBlank || isPwTooShort) {
+        val areFieldsBlank = request.userName.isNullOrBlank() || request.password.isNullOrBlank()
+        if (areFieldsBlank) {
             call.respond(HttpStatusCode.Conflict)
             return@post
         }
-        val user = userDataSource.getUserByUserName(request.userName)
+        val isPwTooShort = request.password!!.length <= 8
+        if (isPwTooShort) {
+            call.respond(HttpStatusCode.Conflict)
+            return@post
+        }
+        val user = userDataSource.getUserByUserName(request.userName!!)
         if (user == null) {
             call.respond(HttpStatusCode.Conflict)
             return@post
         }
         val isVerified = hashingService.verify(
-            request.password,
+            request.password!!,
             SaltedHash(
                 hash = user.password,
                 salt = user.salt
@@ -50,7 +54,10 @@ fun Route.signIn(
         }
         val token = tokenService.generateToken(
             tokenConfig,
-            TokenClaim(name = "UserId", value = user.id.toString())
+            TokenClaim(name = "userID", value = user.id.toString()),
+            TokenClaim(name = "userName", value = user.userName),
+            TokenClaim(name = "email", value = user.email),
+            TokenClaim(name = "image", value = user.imageBase64)
         )
         call.respond(status = HttpStatusCode.OK, message = AuthResponse(token = token))
     }

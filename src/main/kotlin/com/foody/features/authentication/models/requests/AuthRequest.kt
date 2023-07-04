@@ -1,9 +1,12 @@
-package com.example.features.authentication.models.requests
+package com.foody.features.authentication.models.requests
 
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class AuthRequest(
-    val userName:String,
-    val password:String
+    var userName: String? = null,
+    var password: String? = null,
+    var confirmPassword: String? = null,
+    var email: String? = null,
+    var imageBase64: String? = null
 )

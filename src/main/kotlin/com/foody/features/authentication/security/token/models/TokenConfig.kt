@@ -1,4 +1,4 @@
-package com.example.features.authentication.security.token.models
+package com.foody.features.authentication.security.token.models
 
 data class TokenConfig(
     val issuer: String,

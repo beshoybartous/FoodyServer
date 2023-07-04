@@ -1,12 +1,12 @@
 package com.foody.di
 
-import com.example.features.authentication.security.hashing.repository.HashingService
-import com.example.features.authentication.security.hashing.repository.SHA256HashingService
-import com.example.features.authentication.security.token.models.TokenConfig
-import com.example.features.authentication.security.token.repository.JwtTokenService
-import com.example.features.authentication.security.token.repository.TokenService
-import com.example.features.authentication.user.repository.MongoUserDataSource
-import com.example.features.authentication.user.repository.UserDataSource
+import com.foody.features.authentication.security.hashing.repository.HashingService
+import com.foody.features.authentication.security.hashing.repository.SHA256HashingService
+import com.foody.features.authentication.security.token.models.TokenConfig
+import com.foody.features.authentication.security.token.repository.JwtTokenService
+import com.foody.features.authentication.security.token.repository.TokenService
+import com.foody.features.authentication.user.repository.MongoUserDataSource
+import com.foody.features.authentication.user.repository.UserDataSource
 import org.koin.dsl.module
 import org.litote.kmongo.coroutine.coroutine
 import org.litote.kmongo.reactivestreams.KMongo

@@ -1,4 +1,4 @@
-package com.example.features.authentication.routes
+package com.foody.features.authentication.routes
 
 import io.ktor.http.*
 import io.ktor.server.application.*

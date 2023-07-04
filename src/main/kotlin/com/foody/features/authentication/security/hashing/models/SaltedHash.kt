@@ -1,4 +1,4 @@
-package com.example.features.authentication.security.hashing.models
+package com.foody.features.authentication.security.hashing.models
 
 data class SaltedHash(
     val hash:String,

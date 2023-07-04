@@ -2,7 +2,7 @@ package com.foody.plugins
 
 import com.auth0.jwt.JWT
 import com.auth0.jwt.algorithms.Algorithm
-import com.example.features.authentication.security.token.models.TokenConfig
+import com.foody.features.authentication.security.token.models.TokenConfig
 import io.ktor.server.application.*
 import io.ktor.server.auth.*
 import io.ktor.server.auth.jwt.*

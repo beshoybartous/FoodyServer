@@ -1,7 +1,7 @@
-package com.example.features.authentication.security.token.repository
+package com.foody.features.authentication.security.token.repository
 
-import com.example.features.authentication.security.token.models.TokenClaim
-import com.example.features.authentication.security.token.models.TokenConfig
+import com.foody.features.authentication.security.token.models.TokenClaim
+import com.foody.features.authentication.security.token.models.TokenConfig
 
 interface TokenService {
     fun generateToken(

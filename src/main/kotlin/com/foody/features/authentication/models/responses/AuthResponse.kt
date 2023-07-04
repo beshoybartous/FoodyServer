@@ -1,4 +1,4 @@
-package com.example.features.authentication.models.responses
+package com.foody.features.authentication.models.responses
 
 import kotlinx.serialization.Serializable
 

@@ -1,6 +1,6 @@
-package com.example.features.authentication.user.repository
+package com.foody.features.authentication.user.repository
 
-import com.example.features.authentication.user.models.User
+import com.foody.features.authentication.user.models.User
 
 interface UserDataSource {
     suspend fun getUserByUserName(userName: String): User?
